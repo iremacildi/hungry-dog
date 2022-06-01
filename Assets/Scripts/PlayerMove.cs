@@ -11,14 +11,16 @@ public class PlayerMove : MonoBehaviour
     public float cameraDistance = 4;
     int multiplier = 1;
     bool keyPressed = false;
+    bool spawned = false;
+    float prewForward;
 
     void Start()
     {
-
+        prewForward = transform.forward.z;
     }
 
-    void Update()
-    {
+    void FixedUpdate()
+    {       
         if(Input.GetKey(KeyCode.LeftShift) && !keyPressed) {
             keyPressed = true;
             multiplier = multiplier * -1;
@@ -27,8 +29,32 @@ public class PlayerMove : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal") * multiplier;
         float verticalInput = Input.GetAxis("Vertical") * multiplier;
 
-        anim.SetFloat("vertical",verticalInput);
-        anim.SetFloat("horizontal",horizontalInput);
+        if (Input.GetKey(KeyCode.Space) && !spawned)
+        {      
+            Debug.Log("123");      
+            spawned = true;
+            prewForward = transform.forward.z;
+            transform.Rotate(0, transform.forward.z * 180,0);
+            anim.SetBool("special",true);
+            anim.SetFloat("vertical",0);
+            anim.SetFloat("horizontal",0);
+        }
+        else
+        {
+            if(spawned && !Input.GetKey(KeyCode.Space))
+            {
+                Debug.Log("456");      
+                spawned = false; 
+                anim.SetBool("special",false);
+                transform.Rotate(0, prewForward * 180,0);
+            }
+            
+            if(!spawned)
+            {
+                anim.SetFloat("vertical",verticalInput);
+                anim.SetFloat("horizontal",horizontalInput);
+            }            
+        }        
 
         Vector3 movementDirection = new Vector3(-horizontalInput, 0, -verticalInput);
         movementDirection.Normalize();
