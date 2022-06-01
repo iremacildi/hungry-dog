@@ -48065,9 +48065,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ad394861a88491eab4d95e4dd7baf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 963194228}
   anim: {fileID: 1940253669}
   speed: 3
   rotationSpeed: 720
+  cameraHeight: 2
+  cameraDistance: 4
 --- !u!95 &1940253669 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2464861352007894700, guid: 58221c6c7dd330842b7765a817fe2421, type: 3}
