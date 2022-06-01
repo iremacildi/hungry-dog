@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal") * multiplier;
         float verticalInput = Input.GetAxis("Vertical") * multiplier;
 
-        if (Input.GetKey(KeyCode.Space) && !spawned)
+        if (Input.GetKey(KeyCode.Space) && !spawned && horizontalInput == 0 && verticalInput == 0)
         {      
             Debug.Log("123");      
             spawned = true;
