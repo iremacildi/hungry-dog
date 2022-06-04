@@ -20,7 +20,8 @@ public class PlayerMove : MonoBehaviour
     }
 
     void FixedUpdate()
-    {       
+    {   
+        //camera turn
         if(Input.GetKey(KeyCode.LeftShift) && !keyPressed) {
             keyPressed = true;
             multiplier = multiplier * -1;
@@ -29,9 +30,9 @@ public class PlayerMove : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal") * multiplier;
         float verticalInput = Input.GetAxis("Vertical") * multiplier;
 
+        //player attack animation
         if (Input.GetKey(KeyCode.Space) && !spawned && horizontalInput == 0 && verticalInput == 0)
-        {      
-            Debug.Log("123");      
+        {         
             spawned = true;
             prewForward = transform.forward.z;
             transform.Rotate(0, transform.forward.z * 180,0);
@@ -42,13 +43,13 @@ public class PlayerMove : MonoBehaviour
         else
         {
             if(spawned && !Input.GetKey(KeyCode.Space))
-            {
-                Debug.Log("456");      
+            {   
                 spawned = false; 
                 anim.SetBool("special",false);
                 transform.Rotate(0, prewForward * 180,0);
             }
             
+            //player walk animation
             if(!spawned)
             {
                 anim.SetFloat("vertical",verticalInput);
@@ -56,6 +57,7 @@ public class PlayerMove : MonoBehaviour
             }            
         }        
 
+        //player walk
         Vector3 movementDirection = new Vector3(-horizontalInput, 0, -verticalInput);
         movementDirection.Normalize();
 
