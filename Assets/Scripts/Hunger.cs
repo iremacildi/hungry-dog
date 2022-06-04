@@ -10,7 +10,7 @@ public class Hunger : MonoBehaviour
 
     private void OnEnable() 
     {
-        currentHunger = maxHunger;
+        currentHunger = 0;
     }
 
     public void ModifyHunger(int amount)
@@ -24,7 +24,7 @@ public class Hunger : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.K)){
-            ModifyHunger(-10);
+            ModifyHunger(+10);
         }
     }
 }
