@@ -16,20 +16,20 @@ public class CollectingFood : MonoBehaviour
         if(Col.gameObject.tag == "Carrot")
         {
             hungerLevel = hungerLevel + 2;
-            //Col.gameObject.transform.parent.gameObject.SetActive(false);
             Destroy(Col.gameObject.transform.parent.gameObject);
+            GetComponentInParent<Hunger>().ModifyHunger(2);
         }
         if(Col.gameObject.tag == "Pea")
         {
             hungerLevel = hungerLevel + 2;
-            //Col.gameObject.transform.parent.gameObject.SetActive(false);
             Destroy(Col.gameObject.transform.parent.gameObject);
+            GetComponentInParent<Hunger>().ModifyHunger(2);
         }
         else if(Col.gameObject.tag == "Meat")
         {
             hungerLevel = hungerLevel + 8;
-            //Col.gameObject.transform.parent.gameObject.SetActive(false);
             Destroy(Col.gameObject.transform.parent.gameObject);
+            GetComponentInParent<Hunger>().ModifyHunger(8);
         }
     }
 
