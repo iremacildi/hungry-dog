@@ -14,11 +14,10 @@ public class CatMove : MonoBehaviour
 
     IEnumerator changeEverySecond() {
         while (true) {
-            Debug.Log("Tick");
             relaxVal = Random.Range(0.0f, 4.0f);
             anim.SetFloat("RelaxValue",relaxVal);
 
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(17);
         }    
     }
 
