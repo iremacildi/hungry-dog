@@ -1,9 +1,10 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class Timer : MonoBehaviour
 {
-    private float timeDuration = 3f * 60f;
+    private float timeDuration = 3f;// * 60f;
     private float timer;
 
     [SerializeField]
@@ -20,8 +21,24 @@ public class Timer : MonoBehaviour
     private float flashTimer;
     private float flashDuration = 1f;
 
+    public GameObject dragon;
+    public GameObject blur;
+    public GameObject dragonCamera;
+    public GameObject mainCamera;
+    private string message1 = "";
+    private string message2 = "";
+    private bool isWinner = false;
+    private bool isLoser = false;
+
     void Start()
     {
+        mainCamera = GameObject.Find("MainCamera");
+        dragonCamera = GameObject.Find("DragonCamera");
+        dragonCamera.SetActive(false);
+        blur = GameObject.Find("Blur");
+        blur.SetActive(false);
+        dragon = GameObject.Find("Dragon");
+        dragon.SetActive(false);
         ResetTimer();
     }
 
@@ -57,6 +74,13 @@ public class Timer : MonoBehaviour
     {
         if(timer != 0){
             timer = 0;
+            mainCamera.SetActive(false);
+            dragonCamera.SetActive(true);
+            blur.SetActive(true);
+            dragon.SetActive(true);
+            message1 = "Time's up! :(";
+            message2 = "Dragon is here.";
+            isLoser = true;
             UpdateTimerDisplay(timer);
         }
 
@@ -80,5 +104,16 @@ public class Timer : MonoBehaviour
         seperator.enabled = enabled;
         firstSecond.enabled = enabled;
         secondSecond.enabled = enabled;
+    }
+
+    void OnGUI()
+    {
+        if (isWinner || isLoser)
+        {
+            GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
+            fontSize.fontSize = 40;
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 300, 100), message1, fontSize);
+            GUI.Label(new Rect(Screen.width / 2 - 125, Screen.height / 2, 600, 100), message2, fontSize);
+        }
     }
 }
