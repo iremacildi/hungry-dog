@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     bool spawned = false;
     float prewForward;
     bool hasTheKey = false;
+    bool _isWin = false;
 
     void Start()
     {
@@ -87,5 +88,11 @@ public class PlayerMove : MonoBehaviour
     public void SetKeyCollected(bool isKeyCollected)
     {
         hasTheKey = isKeyCollected;
+    }
+
+    public void SetIsWin(bool isWin)
+    {
+        _isWin = isWin;
+        anim.SetBool("win",isWin);
     }
 }
