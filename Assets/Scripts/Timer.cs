@@ -23,7 +23,9 @@ public class Timer : MonoBehaviour
 
     private GameObject dragon;
     private GameObject dragonCamera;
+    private GameObject winnerCamera;
     private GameObject mainCamera;
+    public GameObject player;
     private string message1 = "";
     private string message2 = "";
     private bool isWinner = false;
@@ -35,6 +37,8 @@ public class Timer : MonoBehaviour
         mainCamera = GameObject.Find("MainCamera");
         dragonCamera = GameObject.Find("DragonCamera");
         dragonCamera.SetActive(false);
+        winnerCamera = GameObject.Find("WinnerCamera");
+        winnerCamera.SetActive(false);
         dragon = GameObject.Find("Dragon");
         dragon.SetActive(false);
         ResetTimer();
@@ -42,7 +46,9 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if(timer > 0){
+        isWinner = player.GetComponent<PlayerMove>().GetIsWin();
+
+        if(!isWinner && timer > 0){
             timer -= Time.deltaTime;
             UpdateTimerDisplay(timer);
         }
@@ -70,7 +76,7 @@ public class Timer : MonoBehaviour
 
     private void Flash()
     {
-        if(timer != 0){
+        if(timer != 0 && !isWinner){
             timer = 0;
             mainCamera.SetActive(false);
             dragonCamera.SetActive(true);
@@ -81,7 +87,7 @@ public class Timer : MonoBehaviour
             UpdateTimerDisplay(timer);
         }
 
-        if(flashTimer <= 0){
+        if(flashTimer <= 0 && !isWinner){
             flashTimer = flashDuration;
         }
         else if(flashTimer >= flashDuration / 2){
@@ -92,7 +98,6 @@ public class Timer : MonoBehaviour
             flashTimer -= Time.deltaTime;
             SetTextDisplay(true);
         }
-
     }
 
     private void SetTextDisplay(bool enabled){
@@ -105,12 +110,21 @@ public class Timer : MonoBehaviour
 
     void OnGUI()
     {
-        if (isWinner || isLoser)
+        if (!isWinner && isLoser)
         {
             GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
             fontSize.fontSize = 40;
             GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 300, 100), message1, fontSize);
             GUI.Label(new Rect(Screen.width / 2 - 125, Screen.height / 2, 600, 100), message2, fontSize);
+        }
+        else if (isWinner && !isLoser)
+        {
+            mainCamera.SetActive(false);
+            winnerCamera.SetActive(true);
+            GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
+            fontSize.fontSize = 40;
+            GUI.Label(new Rect(Screen.width / 2 - 85, Screen.height / 2 - 100, 300, 100), "Congrats!", fontSize);
+            GUI.Label(new Rect(Screen.width / 2 - 210, Screen.height / 2, 600, 100), "You saved your humans.", fontSize);
         }
     }
 }

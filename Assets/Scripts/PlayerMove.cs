@@ -95,4 +95,9 @@ public class PlayerMove : MonoBehaviour
         _isWin = isWin;
         anim.SetBool("win",isWin);
     }
+
+    public bool GetIsWin()
+    {
+        return _isWin;
+    }
 }

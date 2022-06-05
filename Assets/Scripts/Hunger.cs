@@ -15,10 +15,13 @@ public class Hunger : MonoBehaviour
     private int currentHungerValue;
     private GameObject chestOpen;
     private GameObject chestClose;
+    public GameObject dragon;
     public event Action<float> OnHungerPctChanged = delegate { };
     private float flashHunger;
     private float flashDuration = 1f;
     private bool isFull;
+    private bool isWinner;
+    private bool isLost;
 
     private void OnEnable() 
     {
@@ -83,12 +86,24 @@ public class Hunger : MonoBehaviour
 
     private void Update()
     {
+        isWinner = GetComponentInParent<PlayerMove>().GetIsWin();
+        isLost = dragon.active;
+
         if(Input.GetKeyDown(KeyCode.K)){
             ModifyHunger(+10);
         }
 
-        if(currentHungerValue >= maxHungerValue){
+        if(currentHungerValue > maxHungerValue){
+            currentHungerValue = maxHungerValue;
+            UpdateHungerDisplay();
+        }
+        else if(currentHungerValue == maxHungerValue && !isWinner && !isLost){
             Flash();
+        }
+
+        if(isWinner || isLost)
+        {
+            SetTextDisplay(true);
         }
     }
 }
