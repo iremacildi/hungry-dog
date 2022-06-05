@@ -113,18 +113,18 @@ public class Timer : MonoBehaviour
         if (!isWinner && isLoser)
         {
             GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
-            fontSize.fontSize = 40;
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 300, 100), message1, fontSize);
-            GUI.Label(new Rect(Screen.width / 2 - 125, Screen.height / 2, 600, 100), message2, fontSize);
+            fontSize.fontSize = 120;
+            GUI.Label(new Rect(Screen.width / 2 - 330, Screen.height / 2 - 150, 1000, 200), message1, fontSize);
+            GUI.Label(new Rect(Screen.width / 2 - 375, Screen.height / 2 + 50, 1600, 200), message2, fontSize);
         }
         else if (isWinner && !isLoser)
         {
             mainCamera.SetActive(false);
             winnerCamera.SetActive(true);
             GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
-            fontSize.fontSize = 40;
-            GUI.Label(new Rect(Screen.width / 2 - 85, Screen.height / 2 - 100, 300, 100), "Congrats!", fontSize);
-            GUI.Label(new Rect(Screen.width / 2 - 210, Screen.height / 2, 600, 100), "You saved your humans.", fontSize);
+            fontSize.fontSize = 120;
+            GUI.Label(new Rect(Screen.width / 2 - 250, Screen.height / 2 - 150, 1000, 200), "Congrats!", fontSize);
+            GUI.Label(new Rect(Screen.width / 2 - 625, Screen.height / 2 + 50, 1600, 200), "You saved your humans.", fontSize);
         }
     }
 }
