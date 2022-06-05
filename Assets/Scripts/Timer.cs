@@ -22,7 +22,6 @@ public class Timer : MonoBehaviour
     private float flashDuration = 1f;
 
     private GameObject dragon;
-    private GameObject blur;
     private GameObject dragonCamera;
     private GameObject mainCamera;
     private string message1 = "";
@@ -32,11 +31,10 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         mainCamera = GameObject.Find("MainCamera");
         dragonCamera = GameObject.Find("DragonCamera");
         dragonCamera.SetActive(false);
-        blur = GameObject.Find("Blur");
-        blur.SetActive(false);
         dragon = GameObject.Find("Dragon");
         dragon.SetActive(false);
         ResetTimer();
@@ -76,7 +74,6 @@ public class Timer : MonoBehaviour
             timer = 0;
             mainCamera.SetActive(false);
             dragonCamera.SetActive(true);
-            blur.SetActive(true);
             dragon.SetActive(true);
             message1 = "Time's up! :(";
             message2 = "Dragon is here.";
