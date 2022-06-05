@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
     private float timeDuration = 4f * 60f;
     private float timer;
+    public AudioSource lostAudioSource;
 
     [SerializeField]
     private TextMeshProUGUI firstMinute;
@@ -88,6 +89,7 @@ public class Timer : MonoBehaviour
             message1 = "Time's up! :(";
             message2 = "Dragon is here.";
             isLoser = true;
+            lostAudioSource.Play();
             UpdateTimerDisplay(timer);
         }
 
