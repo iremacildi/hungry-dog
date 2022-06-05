@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Timer : MonoBehaviour
 {
-    private float timeDuration = 3f * 60f;
+    private float timeDuration = 4f * 60f;
     private float timer;
     public AudioSource lostAudioSource;
 
