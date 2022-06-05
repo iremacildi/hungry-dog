@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Timer : MonoBehaviour
 {
-    private float timeDuration = 4f * 60f;
+    private float timeDuration = 3f * 60f;
     private float timer;
     public AudioSource lostAudioSource;
 
@@ -26,6 +26,7 @@ public class Timer : MonoBehaviour
     private GameObject dragonCamera;
     private GameObject winnerCamera;
     private GameObject mainCamera;
+    public GameObject pauseMenu;
     public GameObject player;
     private string message1 = "";
     private string message2 = "";
@@ -116,21 +117,24 @@ public class Timer : MonoBehaviour
 
     void OnGUI()
     {
-        if (!isWinner && isLoser)
+        if(!pauseMenu.active)
         {
-            GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
-            fontSize.fontSize = 120;
-            GUI.Label(new Rect(Screen.width / 2 - 330, Screen.height / 2 - 150, 1000, 200), message1, fontSize);
-            GUI.Label(new Rect(Screen.width / 2 - 375, Screen.height / 2 + 50, 1600, 200), message2, fontSize);
-        }
-        else if (isWinner && !isLoser)
-        {
-            mainCamera.SetActive(false);
-            winnerCamera.SetActive(true);
-            GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
-            fontSize.fontSize = 120;
-            GUI.Label(new Rect(Screen.width / 2 - 250, Screen.height / 2 - 150, 1000, 200), "Congrats!", fontSize);
-            GUI.Label(new Rect(Screen.width / 2 - 625, Screen.height / 2 + 50, 1600, 200), "You saved your humans.", fontSize);
-        }
+            if (!isWinner && isLoser)
+            {
+                GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
+                fontSize.fontSize = 120;
+                GUI.Label(new Rect(Screen.width / 2 - 330, Screen.height / 2 - 150, 1000, 200), message1, fontSize);
+                GUI.Label(new Rect(Screen.width / 2 - 375, Screen.height / 2 + 50, 1600, 200), message2, fontSize);
+            }
+            else if (isWinner && !isLoser)
+            {
+                mainCamera.SetActive(false);
+                winnerCamera.SetActive(true);
+                GUIStyle fontSize = new GUIStyle(GUI.skin.GetStyle("label"));
+                fontSize.fontSize = 120;
+                GUI.Label(new Rect(Screen.width / 2 - 250, Screen.height / 2 - 150, 1000, 200), "Congrats!", fontSize);
+                GUI.Label(new Rect(Screen.width / 2 - 625, Screen.height / 2 + 50, 1600, 200), "You saved your humans.", fontSize);
+            }
+        } 
     }
 }
