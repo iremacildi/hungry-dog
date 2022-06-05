@@ -6,10 +6,16 @@ public class Hunger : MonoBehaviour
     [SerializeField]
     private int maxHunger = 100;
     private int currentHunger;
+    private GameObject chestOpen;
+    private GameObject chestClose;
     public event Action<float> OnHungerPctChanged = delegate { };
 
     private void OnEnable() 
     {
+        chestOpen = GameObject.Find("Chest_Open");
+        chestOpen.SetActive(false);
+        chestClose = GameObject.Find("Chest_Close");
+        chestClose.SetActive(true);
         currentHunger = 0;
     }
 
@@ -19,6 +25,11 @@ public class Hunger : MonoBehaviour
 
         float currentHungerPct = (float)currentHunger / (float)maxHunger;
         OnHungerPctChanged(currentHungerPct);
+
+        if(currentHunger >= 100){
+            chestOpen.SetActive(true);
+            chestClose.SetActive(false);
+        }
     }
 
     private void Update()

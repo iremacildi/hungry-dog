@@ -8,6 +8,8 @@ TagManager:
   - Carrot
   - Pea
   - Treat
+  - ChestClosed
+  - ChestOpen
   layers:
   - Default
   - TransparentFX

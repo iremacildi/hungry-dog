@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Timer : MonoBehaviour
 {
-    private float timeDuration = 3f;// * 60f;
+    private float timeDuration = 4f * 60f;
     private float timer;
 
     [SerializeField]
@@ -21,10 +21,10 @@ public class Timer : MonoBehaviour
     private float flashTimer;
     private float flashDuration = 1f;
 
-    public GameObject dragon;
-    public GameObject blur;
-    public GameObject dragonCamera;
-    public GameObject mainCamera;
+    private GameObject dragon;
+    private GameObject blur;
+    private GameObject dragonCamera;
+    private GameObject mainCamera;
     private string message1 = "";
     private string message2 = "";
     private bool isWinner = false;
