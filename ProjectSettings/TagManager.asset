@@ -11,6 +11,7 @@ TagManager:
   - ChestClosed
   - ChestOpen
   - Gate
+  - DogTreat
   layers:
   - Default
   - TransparentFX

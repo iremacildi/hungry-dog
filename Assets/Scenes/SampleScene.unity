@@ -7380,6 +7380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogTreat (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1049941115129576, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
+      propertyPath: m_TagString
+      value: DogTreat
+      objectReference: {fileID: 0}
     - target: {fileID: 4165583208300368, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -16646,6 +16650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogTreat (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1049941115129576, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
+      propertyPath: m_TagString
+      value: DogTreat
+      objectReference: {fileID: 0}
     - target: {fileID: 4165583208300368, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -25745,6 +25753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogTreat
       objectReference: {fileID: 0}
+    - target: {fileID: 1049941115129576, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
+      propertyPath: m_TagString
+      value: DogTreat
+      objectReference: {fileID: 0}
     - target: {fileID: 4165583208300368, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -32724,6 +32736,10 @@ PrefabInstance:
     - target: {fileID: 1049941115129576, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
       propertyPath: m_Name
       value: DogTreat (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049941115129576, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
+      propertyPath: m_TagString
+      value: DogTreat
       objectReference: {fileID: 0}
     - target: {fileID: 4165583208300368, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
       propertyPath: m_RootOrder
@@ -44472,6 +44488,10 @@ PrefabInstance:
     - target: {fileID: 1049941115129576, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
       propertyPath: m_Name
       value: DogTreat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049941115129576, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
+      propertyPath: m_TagString
+      value: DogTreat
       objectReference: {fileID: 0}
     - target: {fileID: 4165583208300368, guid: a3c99d807c3f721468e9d4e57edc49db, type: 3}
       propertyPath: m_RootOrder

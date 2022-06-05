@@ -30,6 +30,7 @@ public class Timer : MonoBehaviour
     private string message2 = "";
     private bool isWinner = false;
     private bool isLoser = false;
+    private float extraTime;
 
     void Start()
     {
@@ -47,6 +48,9 @@ public class Timer : MonoBehaviour
     void Update()
     {
         isWinner = player.GetComponent<PlayerMove>().GetIsWin();
+        extraTime = player.GetComponent<CollectingFood>().GetExtraTime();
+        timer += extraTime;
+        player.GetComponent<CollectingFood>().SetExtraTimeZero();
 
         if(!isWinner && timer > 0){
             timer -= Time.deltaTime;

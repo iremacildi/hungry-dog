@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CollectingFood : MonoBehaviour
 {
-    public int hungerLevel;
     private bool _isFull;
+    public float _extraTime = 0f;
 
     void Start()
     {
@@ -16,27 +16,39 @@ public class CollectingFood : MonoBehaviour
     {
         if(Col.gameObject.tag == "Carrot" && !_isFull)
         {
-            hungerLevel = hungerLevel + 2;
             Destroy(Col.gameObject.transform.parent.gameObject);
             GetComponentInParent<Hunger>().ModifyHunger(2);
         }
-        if(Col.gameObject.tag == "Pea" && !_isFull)
+        else if(Col.gameObject.tag == "Pea" && !_isFull)
         {
-            hungerLevel = hungerLevel + 2;
             Destroy(Col.gameObject.transform.parent.gameObject);
             GetComponentInParent<Hunger>().ModifyHunger(2);
         }
         else if(Col.gameObject.tag == "Meat" && !_isFull)
         {
-            hungerLevel = hungerLevel + 8;
             Destroy(Col.gameObject.transform.parent.gameObject);
             GetComponentInParent<Hunger>().ModifyHunger(8);
+        }
+        else if(Col.gameObject.tag == "Treat")
+        {
+            Destroy(Col.gameObject.transform.parent.gameObject);
+            _extraTime = 10.0f;
         }
     }
 
     public void SetIsFull(bool isFull)
     {
         _isFull = isFull;
+    }
+
+    public void SetExtraTimeZero()
+    {
+        _extraTime = 0f;
+    }
+
+    public float GetExtraTime()
+    {
+        return _extraTime;
     }
 
     void Update()
