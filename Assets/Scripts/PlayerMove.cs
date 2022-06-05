@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     bool keyPressed = false;
     bool spawned = false;
     float prewForward;
+    bool hasTheKey = false;
 
     void Start()
     {
@@ -81,5 +82,10 @@ public class PlayerMove : MonoBehaviour
         {
             keyPressed = false;
         }
+    }
+
+    public void SetKeyCollected(bool isKeyCollected)
+    {
+        hasTheKey = isKeyCollected;
     }
 }

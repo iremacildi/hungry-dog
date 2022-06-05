@@ -13,7 +13,6 @@ public class Hunger : MonoBehaviour
     private void OnEnable() 
     {
         chestOpen = GameObject.Find("Chest_Open");
-        chestOpen.SetActive(false);
         chestClose = GameObject.Find("Chest_Close");
         chestClose.SetActive(true);
         currentHunger = 0;

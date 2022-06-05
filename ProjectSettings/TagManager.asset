@@ -10,6 +10,7 @@ TagManager:
   - Treat
   - ChestClosed
   - ChestOpen
+  - Gate
   layers:
   - Default
   - TransparentFX
